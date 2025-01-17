@@ -49,7 +49,7 @@ class AddProductPage extends StatelessWidget {
                       size: 20,
                     ),
                     onPressed: () {
-                      Get.back();
+                      Navigator.pop(context);
                     },
                   ),
                 ),
