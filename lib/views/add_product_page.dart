@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:hackerkernal/controllers/add_product_controller.dart';
@@ -96,13 +97,19 @@ class AddProductPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 5),
                             if (controller.imagePath.value != null)
-                              Center(
-                                child: Image.file(
-                                  File(controller.imagePath.value!),
-                                  height: 100,
-                                  fit: BoxFit.fill,
-                                ),
-                              )
+                                Center(
+                      child: kIsWeb
+                          ? Image.network(
+                             controller.imagePath.value!,
+                              height: 100,
+                              fit: BoxFit.fill,
+                            )
+                          : Image.file(
+                              File(controller.imagePath.value!),
+                              height: 100,
+                              fit: BoxFit.fill,
+                            ),
+                    )
                             else
                               InkWell(
                                 onTap: controller.pickImage,

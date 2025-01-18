@@ -25,6 +25,8 @@ bool _showAllAccessories = false;
     _loadProducts();
     _loadAccessories();
   }
+
+
   Future<void> _loadAccessories() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -38,6 +40,8 @@ bool _showAllAccessories = false;
       }).toList();
     });
   }
+
+
   Future<void> _loadProducts() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -49,6 +53,7 @@ bool _showAllAccessories = false;
           'price': parts[2],
         };
       }).toList();
+      
     });
   }
 
@@ -58,6 +63,7 @@ bool _showAllAccessories = false;
     bool isDuplicate = _products.any((existingProduct) =>
         existingProduct['name']!.toLowerCase() ==
         product['name']!.toLowerCase());
+
 
     if (isDuplicate) {
       
